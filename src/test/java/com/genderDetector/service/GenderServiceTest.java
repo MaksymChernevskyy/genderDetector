@@ -12,36 +12,31 @@ class GenderServiceTest {
 
     @Test
     void shouldReturnMaleForOneName() {
-        assertEquals(GenderNameEnum.MALE.name(), genderService.chooseMethodToGetGenderName(Arrays.asList("Jan", "Maria", "Rokita"), 1));
+        assertEquals(GenderNameEnum.MALE.name(), genderService.chooseMethodToGetGenderName(Arrays.asList("Jan", "Maria", "Rokita"), false));
     }
 
     @Test
     void shouldReturnFemaleForOneName() {
-        assertEquals(GenderNameEnum.FEMALE.name(), genderService.chooseMethodToGetGenderName(Arrays.asList("Anna", "Jan", "Zbigniew"),1));
+        assertEquals(GenderNameEnum.FEMALE.name(), genderService.chooseMethodToGetGenderName(Arrays.asList("Anna", "Jan", "Zbigniew"),false));
     }
 
     @Test
     void shouldReturnInconclusiveForOneName() {
-        assertEquals(GenderNameEnum.INCONCLUSIVE.name(), genderService.chooseMethodToGetGenderName(Arrays.asList("aaa", "Jan", "Zbigniew"),1));
+        assertEquals(GenderNameEnum.INCONCLUSIVE.name(), genderService.chooseMethodToGetGenderName(Arrays.asList("aaa", "Jan", "Zbigniew"),false));
     }
 
     @Test
     void shouldReturnFemaleForSeveralNames() {
-        assertEquals(GenderNameEnum.FEMALE.name(), genderService.chooseMethodToGetGenderName(Arrays.asList("Anna", "Gertruda", "Zbigniew"), 2));
+        assertEquals(GenderNameEnum.FEMALE.name(), genderService.chooseMethodToGetGenderName(Arrays.asList("Anna", "Gertruda", "Zbigniew"), true));
     }
 
     @Test
     void shouldReturnMaleForSeveralNames() {
-        assertEquals(GenderNameEnum.MALE.name(), genderService.chooseMethodToGetGenderName(Arrays.asList("Anna", "Jan", "Zbigniew"),2));
+        assertEquals(GenderNameEnum.MALE.name(), genderService.chooseMethodToGetGenderName(Arrays.asList("Anna", "Jan", "Zbigniew"),true));
     }
 
     @Test
     void shouldReturnInconclusiveForSeveralNames() {
-        assertEquals(GenderNameEnum.INCONCLUSIVE.name(), genderService.chooseMethodToGetGenderName(Arrays.asList("Jan", "Maria", "Rokita"),2));
-    }
-
-    @Test
-    void shouldReturnNoSuchMethodNumber() {
-        assertEquals("No such method number", genderService.chooseMethodToGetGenderName(Arrays.asList("aaa", "Jan"), 3));
+        assertEquals(GenderNameEnum.INCONCLUSIVE.name(), genderService.chooseMethodToGetGenderName(Arrays.asList("Jan", "Maria", "Rokita"),true));
     }
 }

@@ -14,12 +14,15 @@ import java.util.Scanner;
 @Service
 public class GenderService {
 
-    public String chooseMethodToGetGenderName(List<String> names, int methodNumber) {
-        return methodNumber == 1 ? getGenderByOnlyOneName(names) : methodNumber == 2 ? getGenderBySeveralNames(names)
-                : "No such method number";
+    public String chooseMethodToGetGenderName(List<String> names, boolean genderByAllNames) {
+        if (genderByAllNames) {
+            return getgenderByAllNames(names);
+        } else {
+            return getGenderByOnlyFirstName(names);
+        }
     }
 
-    private String getGenderByOnlyOneName(List<String> names) {
+    private String getGenderByOnlyFirstName(List<String> names) {
         String genderName = GenderNameEnum.INCONCLUSIVE.name();
         if (names != null) {
             String name = names.get(0);
@@ -43,7 +46,7 @@ public class GenderService {
         return genderName;
     }
 
-    private String getGenderBySeveralNames(List<String> names) {
+    private String getgenderByAllNames(List<String> names) {
         int countMale = 0;
         int countFemale = 0;
         for (String name : names) {

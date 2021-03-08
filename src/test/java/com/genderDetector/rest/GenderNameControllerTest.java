@@ -30,11 +30,11 @@ class GenderNameControllerTest {
     @Test
     void shouldReturnStatusCodeOK() {
         List<String> names = new ArrayList<>(Arrays.asList("Zbigniew", "Jan", "Maria"));
-        when(genderService.chooseMethodToGetGenderName(names,1)).thenReturn(GenderNameEnum.FEMALE.name());
+        when(genderService.chooseMethodToGetGenderName(names,true)).thenReturn(GenderNameEnum.FEMALE.name());
 
-        ResponseEntity<?> status = controller.getGenderName(names, 1);
+        ResponseEntity<?> status = controller.getGenderName(names, true);
 
         assertEquals(status.getStatusCode(), HttpStatus.OK);
-        verify(genderService).chooseMethodToGetGenderName(names, 1);
+        verify(genderService).chooseMethodToGetGenderName(names, true);
     }
 }

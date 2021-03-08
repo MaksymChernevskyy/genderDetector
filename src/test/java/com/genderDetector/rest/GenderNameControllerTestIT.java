@@ -34,11 +34,11 @@ public class GenderNameControllerTestIT {
         List<String> names = new ArrayList<>(Arrays.asList("Jan", "Maria", "Zbigniew"));
 
         MvcResult result = mockMvc
-                .perform(get("/gender/names?methodNumber=1&names=Jan&names=Maria&names=Zbigniew"))
+                .perform(get("/gender/names?genderByAllNames=true&names=Jan&names=Maria&names=Zbigniew"))
                 .andReturn();
 
         int actualHttpStatus = result.getResponse().getStatus();
         assertEquals(HttpStatus.OK.value(), actualHttpStatus);
-        verify(genderService).chooseMethodToGetGenderName(names, 1);
+        verify(genderService).chooseMethodToGetGenderName(names, true);
     }
 }

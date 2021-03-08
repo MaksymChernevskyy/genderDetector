@@ -25,8 +25,9 @@ public class GenderNameController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/names", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> getGenderName(@RequestParam("names") List<String> names, @RequestParam("methodNumber") int methodNumber) {
-       return getResponseForSuccess(genderService.chooseMethodToGetGenderName(names, methodNumber));
+    public ResponseEntity<String> getGenderName(@RequestParam("names") List<String> names,
+                                                @RequestParam("genderByAllNames") boolean genderByAllNames) {
+       return getResponseForSuccess(genderService.chooseMethodToGetGenderName(names, genderByAllNames));
     }
 
     private ResponseEntity<String> getResponseForSuccess(String names) {
